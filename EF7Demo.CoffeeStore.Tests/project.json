@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "EF7Demo.CoffeeStore.Tests Class Library",
+  "authors": [ "dneimke" ],
+
+
+  "dependencies": {
+    "xunit": "2.1.0-*",
+    "xunit.runner.dnx": "2.1.0-*",
+    "EntityFramework.Core": "7.0.0-*",
+    "EntityFramework.InMemory": "7.0.0-*",
+    "EF7Demo.CoffeeStore": "1.0.0-*"
+  },
+
+  "commands": {
+    "test": "xunit.runner.dnx"
+  },
+
+  "frameworks": {
+    "dnx451": { }
+  }
+}
