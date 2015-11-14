@@ -32,12 +32,54 @@ namespace EF7Demo.CoffeeStore
 
         public void Main(string[] args)
         {
-            var searchTerm = "Caffe";
+            // BulkOperation();
+            SearchOperation();
+            Console.Read();
+        }
+
+
+        void BulkOperation()
+        {
             var db = serviceProvider.GetService<ICoffeeStoreContext>();
-            var coffees = db.FindCoffee(searchTerm);
+            var coffees = db.Coffee.ToArray();
+
+            db.Coffee.Remove(coffees[0]);
+            db.Coffee.Remove(coffees[1]);
+
+            coffees[2].Name = "Modified Coffee";
+            coffees[3].Name = "Modified Other Coffee";
+
+            db.Coffee.Add(new Coffee { Name = "Coffee 4", Retail = 5.55M });
+            db.Coffee.Add(new Coffee { Name = "Coffee 2", Retail = 3.30M });
+            db.Coffee.Add(new Coffee { Name = "Coffee 3", Retail = 1.55M });
+            db.Coffee.Add(new Coffee { Name = "Coffee 1", Retail = 4.25M });
+            db.Coffee.Add(new Coffee { Name = "Coffee 5", Retail = 3M });
+
+            db.Commit();
+        }
+
+
+
+        void SearchOperation()
+        {
+            var searchTerm = "C%";
+            var db = serviceProvider.GetService<ICoffeeStoreContext>();
+
+            var coffees = ((CoffeeStoreContext)db).Coffee
+                                .FromSql("SELECT * FROM [dbo].[Coffee] WHERE [Name] LIKE {0}", searchTerm)
+                                .OrderByDescending(e => e.Retail)
+                                .ToList();
+
+            //var coffees = db.FindCoffee(searchTerm)
+            //    .OrderByDescending(e => e.Retail);
+
+
 
             Console.WriteLine($"Found {coffees.Count()} result(s) for search term '{searchTerm}'");
-            Console.Read();
+            foreach (var coffee in coffees)
+            {
+                Console.WriteLine("- {0} - {1}", coffee.Name, coffee.Retail);
+            }
         }
 
 
