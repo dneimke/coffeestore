@@ -8,7 +8,7 @@ using EF7Demo.CoffeeStore.Model;
 namespace EF7Demo.CoffeeStore.Migrations
 {
     [DbContext(typeof(CoffeeStoreContext))]
-    [Migration("20151114063835_Initial")]
+    [Migration("20151115000825_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

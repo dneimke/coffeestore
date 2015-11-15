@@ -38,17 +38,15 @@ namespace EF7Demo.CoffeeStore.Migrations
                 });
 
 
-            // custom extension...
             migrationBuilder.InitialUpExtension();
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.InitialDownExtension();
+
             migrationBuilder.DropTable("Coffee");
             migrationBuilder.DropTable("Order");
-
-            // custom extension...
-            migrationBuilder.InitialDownExtension();
         }
     }
 }
