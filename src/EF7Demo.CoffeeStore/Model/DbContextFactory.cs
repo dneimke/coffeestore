@@ -33,7 +33,7 @@ namespace EF7Demo.CoffeeStore.Model
 
         public CoffeeStoreContext Create()
         {
-           return _provider.GetService<CoffeeStoreContext>();
+            return _provider.GetService<CoffeeStoreContext>();
         }
     }
 }
