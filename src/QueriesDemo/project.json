@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "ClassLibrary1 Class Library",
+  "authors": [ "dneimke" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "dependencies": {
+    "EntityFramework.Core": "7.0.0-*",
+    "EntityFramework.Commands": "7.0.0-*",
+    "EntityFramework.MicrosoftSqlServer":  "7.0.0-*"
+  },
+
+  "commands": {
+    "ClassLibrary1":  "ClassLibrary1",
+    "EF": "EntityFramework.Commands"
+  },
+
+  "frameworks": {
+    "dnx451": { }
+  }
+}
