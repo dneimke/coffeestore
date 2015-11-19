@@ -5,11 +5,11 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using ClassLibrary1.Models;
 
-namespace ClassLibrary1.Migrations
+namespace QueriesDemo.Migrations
 {
     [DbContext(typeof(CoffeeContext))]
-    [Migration("20151115214613_initial")]
-    partial class initial
+    [Migration("20151118001650_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,6 +62,8 @@ namespace ClassLibrary1.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("Coffee_Id");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageUrl");
@@ -94,8 +96,8 @@ namespace ClassLibrary1.Migrations
             modelBuilder.Entity("ClassLibrary1.Models.Coffee", b =>
                 {
                     b.HasOne("ClassLibrary1.Models.Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId");
+                        .WithOne()
+                        .HasForeignKey("ClassLibrary1.Models.Coffee", "ImageId");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.CoffeeCustomerOrder", b =>

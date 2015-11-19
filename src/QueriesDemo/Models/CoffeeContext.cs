@@ -25,6 +25,10 @@ namespace ClassLibrary1.Models
             modelBuilder.Entity<Coffee>()
                 .HasKey(c => c.Coffee_Id);
 
+            modelBuilder.Entity<Coffee>()
+                .HasOne(p => p.Image)
+                .WithOne()
+                .HasForeignKey<Image>(e => e.Coffee_Id);
 
             modelBuilder.Entity<Coffee>()
                 .Property<DateTime>("LastModified");

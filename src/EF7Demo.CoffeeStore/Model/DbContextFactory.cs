@@ -6,6 +6,9 @@ using System;
 
 namespace EF7Demo.CoffeeStore.Model
 {
+
+    // This is required so that EF.Commands can correctly identify the database
+    // This would not be required in an Web application
     public class CoffeeStoreContextFactory : IDbContextFactory<CoffeeStoreContext>
     {
         IServiceProvider _provider;

@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EF7Demo.CoffeeStore", "src\EF7Demo.CoffeeStore\EF7Demo.CoffeeStore.xproj", "{12B7F08D-40FB-4297-AF81-9565D6B33CFB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D3A9589C-B300-4E91-A036-6055DE638340}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D3A9589C-B300-4E91-A036-6055DE638340}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EF7Demo.CoffeeStore.Tests", "test\EF7Demo.CoffeeStore.Tests\EF7Demo.CoffeeStore.Tests.xproj", "{CCDE3BBD-0987-44F0-9C4C-B64F3BD5D223}"
 EndProject

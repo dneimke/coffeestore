@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity.Migrations;
 using Microsoft.Data.Entity.Metadata;
+using EF7Demo.CoffeeStore.MigrationExtensions;
 
 namespace EF7Demo.CoffeeStore.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,10 +36,14 @@ namespace EF7Demo.CoffeeStore.Migrations
                 {
                     table.PrimaryKey("PK_Order", x => x.Id);
                 });
+
+            migrationBuilder.InitialUpExtension();
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.InitialDownExtension();
+
             migrationBuilder.DropTable("Coffee");
             migrationBuilder.DropTable("Order");
         }

@@ -21,7 +21,7 @@ namespace EF7Demo.CoffeeStore.Model
 
             foreach (var item in coffees)
             {
-                item.Retail = RoundPrice(item.Retail * multiplier);
+                item.Retail = RoundedPrice(item.Retail, multiplier);
             }
 
             _context.Commit();
@@ -30,9 +30,10 @@ namespace EF7Demo.CoffeeStore.Model
         }
 
 
-        private static decimal RoundPrice(decimal price)
+        public decimal RoundedPrice(decimal price, decimal multiplier)
         {
-            var rounded = Math.Round(price * 20, 0) / 20;
+            var newPrice = price * multiplier;
+            var rounded = Math.Round(newPrice * 20, 0) / 20;
 
             if (rounded % 1 == 0)
             {
@@ -48,5 +49,6 @@ namespace EF7Demo.CoffeeStore.Model
     public interface IPriceService
     {
         IEnumerable<Coffee> UpdatePrices(decimal multiplier);
+        decimal RoundedPrice(decimal price, decimal multiplier);
     }
 }

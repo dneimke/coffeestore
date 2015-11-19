@@ -13,7 +13,7 @@
   },
 
   "commands": {
-    "ClassLibrary1":  "ClassLibrary1",
+    "QueriesDemo":  "QueriesDemo",
     "EF": "EntityFramework.Commands"
   },
 

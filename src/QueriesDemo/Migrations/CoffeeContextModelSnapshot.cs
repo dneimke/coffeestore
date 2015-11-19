@@ -5,7 +5,7 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using ClassLibrary1.Models;
 
-namespace ClassLibrary1.Migrations
+namespace QueriesDemo.Migrations
 {
     [DbContext(typeof(CoffeeContext))]
     partial class CoffeeContextModelSnapshot : ModelSnapshot
@@ -61,6 +61,8 @@ namespace ClassLibrary1.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("Coffee_Id");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageUrl");
@@ -93,8 +95,8 @@ namespace ClassLibrary1.Migrations
             modelBuilder.Entity("ClassLibrary1.Models.Coffee", b =>
                 {
                     b.HasOne("ClassLibrary1.Models.Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId");
+                        .WithOne()
+                        .HasForeignKey("ClassLibrary1.Models.Coffee", "ImageId");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.CoffeeCustomerOrder", b =>

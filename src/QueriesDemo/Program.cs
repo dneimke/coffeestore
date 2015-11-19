@@ -15,6 +15,10 @@ namespace ClassLibrary1
             
             Console.WriteLine("Press any key to run queries...");
             Console.ReadKey();
+            
+            // Uncomment these and watch in SQL Profiler to see how SQL statements 
+            // are run against the target database
+
             // GraphBehaviorQuery();
             // FromSqlQuery();
             // ShadowStateQuery();
@@ -29,17 +33,19 @@ namespace ClassLibrary1
         {
             using (var db = new CoffeeContext())
             {
-                // GitHub Issue: 
-                // determines what is brought into the Graph dependencies
                 var coffee1 = new Coffee {
                     Name = "Graph Coffee 1",
                     Price = 3.33M,
                     Image = new Image { Description = "Test 1", ImageUrl = "/images/test1.png" }
                 };
 
+                // IncludeDependents is the default behavior
                 db.Coffee.Add(coffee1, GraphBehavior.IncludeDependents);
+                db.SaveChanges();
 
 
+                // This won't create a record in the Db for the child Image object
+                // due to GraphBehavior
                 var coffee2 = new Coffee
                 {
                     Name = "Graph Coffee 2",
@@ -48,14 +54,16 @@ namespace ClassLibrary1
                 };
 
                 db.Coffee.Add(coffee2, GraphBehavior.SingleObject);
-
                 db.SaveChanges();
             }
         }
 
         void FromSqlQuery()
         {
-            // FromSql
+            // FromSql is useful for callling out to Views, Procs, or for running ad-hoc SQL
+            // FromSql takes a string and a params list of parameters.  
+            // Use the params array as opposed to using string format as it will create
+            // genuine Sql parameters which are safer and perform better
             using (var db = new CoffeeContext())
             {
                 var searchTerm = "Caffe%";
@@ -68,7 +76,8 @@ namespace ClassLibrary1
 
         void ShadowStateQuery()
         {
-            // Querying Shadow State
+            // Querying Shadow State - take note of how this is configured and used in DbContext class
+            // ShadowState could be useful for implementing a generic app-wide auditing feature
             using (var db = new CoffeeContext())
             {
                 db.Coffee.Add(new Coffee { Name = "Last Added Coffee" });
@@ -87,19 +96,22 @@ namespace ClassLibrary1
 
         void RelationalQuery()
         {
-            // Relational - ThenInclude
+            // Relational - ThenInclude is now used to allow drill down through
+            // child objects that hang off of collections.
+            // Previously this was done with messy sub-SELECT statements to force
+            // Eager loading
             using (var db = new CoffeeContext())
             {
-                var store = db.Store.FirstOrDefault();
+                // var store = db.Store.FirstOrDefault();
 
                 //var store = db.Store
                 //                .Include(s => s.TradingDays)
                 //                .FirstOrDefault();
 
-                //var store = db.Store
-                //    .Include(s => s.TradingDays)
-                //        .ThenInclude(td => td.CustomerOrders)
-                //    .FirstOrDefault();
+                var store = db.Store
+                    .Include(s => s.TradingDays)
+                        .ThenInclude(td => td.CustomerOrders)
+                    .FirstOrDefault();
 
                 Console.WriteLine("This first trading day for {0} is {1}", store.Name, store.TradingDays[0].Day);
             }
@@ -107,7 +119,9 @@ namespace ClassLibrary1
 
         void BatchingQuery()
         {
-            // Batching
+            // Batching - run this query and watch in Sql Profiler to 
+            // see that it is all sent through as 1 batched statement
+            // You can set MaxBatchSize() in OnConfiguring override of DbContext
             using (var db = new CoffeeContext())
             {
                 var coffees = db.Coffee.ToArray();
@@ -129,14 +143,18 @@ namespace ClassLibrary1
 
         void SmartQuery()
         {
-            // Smart Queries - e.g. Multiple Includes == multiple queries
+            // Smart Queries - EF7 can look at certain queries and break them down into 
+            // multiple executable SQL statements rather than having to produce 1 single 
+            // SQL statement
             using (var db = new CoffeeContext())
             {
-                var custOrder = db.CustomerOrder
-                    .Include(c => c.Coffees)
-                        .ThenInclude(c => c.Coffee)
-                            .ThenInclude(c => c.Image)
-                    .FirstOrDefault(co => co.Id == 1);
+                var day = db.TradingDay
+                        .Include(td => td.CustomerOrders)
+                     .Where(td => td.CustomerOrders.Count > 0)
+                     .FirstOrDefault();
+
+                Console.WriteLine("Selected day: {0}, orders: {1}", day.Day.DayOfWeek, day.CustomerOrders.Count());
+
             }
         }
 

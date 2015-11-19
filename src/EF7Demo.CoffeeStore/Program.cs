@@ -33,8 +33,16 @@ namespace EF7Demo.CoffeeStore
 
         public void Main(string[] args)
         {
-            // BulkOperation();
-            SearchOperation();
+            // Make sure you have created a database called CoffeeStore
+
+
+            serviceProvider.EnsureMigrationsApplied();  // NOTE: this is a custom extension method
+            serviceProvider.EnsureDevelopmentData();    // NOTE: this is a custom extension method
+
+
+
+
+            SearchOperation(); // Take a look inside of this method for further info
             Console.Read();
         }
 
@@ -70,6 +78,15 @@ namespace EF7Demo.CoffeeStore
                                 .FromSql("SELECT * FROM [dbo].[Coffee] WHERE [Name] LIKE {0}", searchTerm)
                                 .OrderByDescending(e => e.Retail)
                                 .ToList();
+
+            // Uncomment and run the app with the following code instead of the above FromSql
+            // - To get this running, you will need to add the MigrationExtensions Up and Down
+            // to the generated Initial migration in the Migrations folder.  To start with, delete and recreate
+            // the target database as Migrations will have already been created.
+
+            // After adding the Migration Extensions, run the following command to see how the 
+            // custom Stored Procedure gets added to as part of the process:
+            //   > dnx ef migrations script > deployment.sql
 
             //var coffees = db.FindCoffee(searchTerm)
             //    .OrderByDescending(e => e.Retail);

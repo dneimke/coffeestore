@@ -65,5 +65,8 @@ namespace ClassLibrary1.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+
+        public int Coffee_Id { get; set; }
+        public Coffee Coffee { get; set; }
     }
 }

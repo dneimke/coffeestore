@@ -9,7 +9,7 @@ using EF7Demo.CoffeeStore.Model;
 
 namespace EF7Demo.CoffeeStore.Tests
 {
-    public class ExtensionMethodTests : TestBase
+    public class ExtensionMethodFixture : TestBase
     {
         [Fact]
         public void TestExtensionMethod()
@@ -19,7 +19,7 @@ namespace EF7Demo.CoffeeStore.Tests
             using (var db = _provider.GetService<ICoffeeStoreContext>())
             {
                 db.EnsureTestData();
-
+                
                 var result = db.Coffee.Count();
 
                 Assert.Equal(5, result);
