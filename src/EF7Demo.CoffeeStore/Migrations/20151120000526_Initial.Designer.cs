@@ -8,13 +8,13 @@ using EF7Demo.CoffeeStore.Model;
 namespace EF7Demo.CoffeeStore.Migrations
 {
     [DbContext(typeof(CoffeeStoreContext))]
-    [Migration("20151118003426_Initial")]
+    [Migration("20151120000526_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-rc2-16340")
+                .HasAnnotation("ProductVersion", "7.0.0-rc2-16377")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("EF7Demo.CoffeeStore.Model.Coffee", b =>

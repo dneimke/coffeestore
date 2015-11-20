@@ -13,7 +13,7 @@ namespace EF7Demo.CoffeeStore.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-rc2-16340")
+                .HasAnnotation("ProductVersion", "7.0.0-rc2-16377")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("EF7Demo.CoffeeStore.Model.Coffee", b =>

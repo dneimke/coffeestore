@@ -11,22 +11,13 @@ namespace EF7Demo.CoffeeStore
 {
     public class Program
     {
-        IConfiguration Configuration = null;
         IServiceProvider serviceProvider = null;
 
         public Program()
         {
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("config.json");
-            Configuration = builder.Build();
-
-            var services = new ServiceCollection();
-
-            ConfigureServices(services);
-
-            serviceProvider = services.BuildServiceProvider();
-
-            Configure(serviceProvider);
+            var startup = new Startup();
+            
+            serviceProvider = startup.ServiceProvider;
         }
 
 
@@ -101,26 +92,7 @@ namespace EF7Demo.CoffeeStore
         }
 
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            var connectionString = Configuration["Data:DefaultConnection:ConnectionString"];
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<CoffeeStoreContext>(options =>
-                {
-                    options.UseSqlServer(connectionString);
-                });
-
-
-            services.AddScoped<ICoffeeStoreContext>(provider => provider.GetService<CoffeeStoreContext>());
-        }
-
-
-        public void Configure(IServiceProvider provider)
-        {
-            provider.EnsureMigrationsApplied();
-            provider.EnsureDevelopmentData();
-        }
+        
     }
 
 }
