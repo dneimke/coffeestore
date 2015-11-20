@@ -2,7 +2,6 @@
 using EF7Demo.CoffeeStore.Model;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -21,17 +20,12 @@ namespace EF7Demo.CoffeeStore
         }
 
 
-
         public void Main(string[] args)
         {
             // Make sure you have created a database called CoffeeStore
 
-
             serviceProvider.EnsureMigrationsApplied();  // NOTE: this is a custom extension method
             serviceProvider.EnsureDevelopmentData();    // NOTE: this is a custom extension method
-
-
-
 
             SearchOperation(); // Take a look inside of this method for further info
             Console.Read();
@@ -59,7 +53,6 @@ namespace EF7Demo.CoffeeStore
         }
 
 
-
         void SearchOperation()
         {
             var searchTerm = "C%";
@@ -82,17 +75,12 @@ namespace EF7Demo.CoffeeStore
             //var coffees = db.FindCoffee(searchTerm)
             //    .OrderByDescending(e => e.Retail);
 
-
-
             Console.WriteLine($"Found {coffees.Count()} result(s) for search term '{searchTerm}'");
             foreach (var coffee in coffees)
             {
                 Console.WriteLine("- {0} - {1}", coffee.Name, coffee.Retail);
             }
         }
-
-
-        
     }
 
 }

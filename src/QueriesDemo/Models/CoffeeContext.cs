@@ -13,6 +13,7 @@ namespace ClassLibrary1.Models
         public DbSet<Coffee> Coffee { get; set; }
         public DbSet<Image> Image { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString =
