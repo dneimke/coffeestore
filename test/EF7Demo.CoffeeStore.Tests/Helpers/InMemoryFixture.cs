@@ -1,8 +1,8 @@
 ﻿using System;
 using EF7Demo.CoffeeStore.Model;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace EF7Demo.CoffeeStore.Tests.Helpers
 {
@@ -16,7 +16,7 @@ namespace EF7Demo.CoffeeStore.Tests.Helpers
 
             services
                 .AddEntityFramework()
-                .AddInMemoryDatabase()
+                .AddEntityFrameworkInMemoryDatabase()
                 .AddDbContext<CoffeeStoreContext>(options =>
                     options.UseInMemoryDatabase()
                 );

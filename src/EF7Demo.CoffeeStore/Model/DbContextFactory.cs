@@ -1,10 +1,4 @@
-﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-
-namespace EF7Demo.CoffeeStore.Model
+﻿namespace EF7Demo.CoffeeStore.Model
 {
 
     // This is required so that EF.Commands can correctly identify the database

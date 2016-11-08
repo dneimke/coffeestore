@@ -1,7 +1,6 @@
 ﻿using EF7Demo.CoffeeStore.Extensions;
 using EF7Demo.CoffeeStore.Model;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;

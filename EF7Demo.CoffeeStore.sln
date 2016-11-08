@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{078A91D3-3550-435D-B541-BFC447A7D288}"
 EndProject
@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D3A9589C-B
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EF7Demo.CoffeeStore.Tests", "test\EF7Demo.CoffeeStore.Tests\EF7Demo.CoffeeStore.Tests.xproj", "{CCDE3BBD-0987-44F0-9C4C-B64F3BD5D223}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "QueriesDemo", "src\QueriesDemo\QueriesDemo.xproj", "{71209615-8715-44AD-AADF-9D486B4E5805}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +31,6 @@ Global
 		{CCDE3BBD-0987-44F0-9C4C-B64F3BD5D223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCDE3BBD-0987-44F0-9C4C-B64F3BD5D223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCDE3BBD-0987-44F0-9C4C-B64F3BD5D223}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71209615-8715-44AD-AADF-9D486B4E5805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71209615-8715-44AD-AADF-9D486B4E5805}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71209615-8715-44AD-AADF-9D486B4E5805}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71209615-8715-44AD-AADF-9D486B4E5805}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +38,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{12B7F08D-40FB-4297-AF81-9565D6B33CFB} = {078A91D3-3550-435D-B541-BFC447A7D288}
 		{CCDE3BBD-0987-44F0-9C4C-B64F3BD5D223} = {D3A9589C-B300-4E91-A036-6055DE638340}
-		{71209615-8715-44AD-AADF-9D486B4E5805} = {078A91D3-3550-435D-B541-BFC447A7D288}
 	EndGlobalSection
 EndGlobal

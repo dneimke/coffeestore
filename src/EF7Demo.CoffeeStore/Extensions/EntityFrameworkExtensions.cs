@@ -1,10 +1,10 @@
 ﻿using EF7Demo.CoffeeStore.Model;
-using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Data.Entity.Migrations;
+using System;
 using System.Linq;
-using Microsoft.Data.Entity;
 
 namespace EF7Demo.CoffeeStore.Extensions
 {

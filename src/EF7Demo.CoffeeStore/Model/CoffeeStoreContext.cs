@@ -1,6 +1,5 @@
 ﻿using System;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace EF7Demo.CoffeeStore.Model

@@ -1,12 +1,11 @@
 ﻿using EF7Demo.CoffeeStore.Extensions;
 using EF7Demo.CoffeeStore.Model;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EF7Demo.CoffeeStore
 {
@@ -36,7 +35,7 @@ namespace EF7Demo.CoffeeStore
         {
             var connectionString = Configuration["Data:DefaultConnection:ConnectionString"];
             services.AddEntityFramework()
-                .AddSqlServer()
+                .AddEntityFrameworkSqlServer()
                 .AddDbContext<CoffeeStoreContext>(options =>
                 {
                     options.UseSqlServer(connectionString);

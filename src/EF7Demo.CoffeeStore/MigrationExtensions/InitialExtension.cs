@@ -1,9 +1,5 @@
-﻿using Microsoft.Data.Entity.Migrations;
-using Microsoft.Data.Entity.Migrations.Operations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace EF7Demo.CoffeeStore.MigrationExtensions
 {
